@@ -257,6 +257,97 @@ Remove the item at the given index (last item in the list by default), and retur
 >>> 
 ```
 
+# Tuples
+https://www.learnpython.dev/02-introduction-to-python/080-advanced-datatypes/30-tuples/#tuple-cheat-sheet
+
+Tuples are UNMMUTABLE. Once create the items inside cannot be changed. Useful for thing like containing a snapshot of datas.
+
+Make a tuple with empty parenthesis. If a value is provided inside the parenthesis, then it is not a tuple anymore. We have to add a commat at the end to make it a tuple
+```
+>>> a = ()
+>>> type(a)
+<class 'tuple'>
+>>> b = (1)
+>>> type(b)
+<class 'int'>
+>>> b = (1,)
+>>> type(b)
+<class 'tuple'>
+>>> b = (1,3,4)
+>>> type(b)
+<class 'tuple'>
+```
+
+In fact the parenthesis are optional as long as we have the commas
+```
+>>> x = 1,2,3,4
+>>> type(x)
+<class 'tuple'>
+```
+
+This will work also for an empty one
+`tuple()`
+
+
+
+Tuples are practical to store datas that together discribe something e.g a Student. Each item can be accessed by its index just like list.
+
+```
+>>> student = ("Haja", "26", "Physics", 9.0)
+>>> student[1]
+'26'
+>>> 
+```
+## Tuple unpacking (Similar to deconstruction in JS)
+
+```
+>>> student
+('Haja', '26', 'Physics', 9.0)
+>>> name, age, subject, gpa = student
+>>> name
+'Haja'
+>>> age
+'26'
+>>> subject
+'Physics'
+>>> gpa
+9.0
+```
+
+If we dont want a specific value in the typle to ne unpacked, we replace with underscore `_`
+
+```
+>>> name, _, _, _ = student
+>>> name
+'Haja'
+>>> 
+```
+## Return a tuple from a function and unpack
+
+```
+>>> def http_status_code():
+...     return 200, "OK"
+... 
+>>> http_status_code()
+(200, 'OK')
+>>> code, name = http_status_code()
+>>> code
+200
+>>> name
+'OK'
+>>> 
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
