@@ -339,3 +339,200 @@ If we want only some specific value (not all) in the tuple, we can unpack, we re
 'OK'
 >>> 
 ```
+
+## Sets
+
+https://www.learnpython.dev/02-introduction-to-python/080-advanced-datatypes/50-sets/#set-cheat-sheet
+
+Datatype that allow to store other immutables types (string, number, all simple data types) in an unsorted way.
+Item can be set only once (no duplicate is allowed). Its a collection, therefore there is no other. Which make it very fast to search (use Hash system).
+
+### Create Set
+Note. curly braces `{}` are used by both `Set` and `Dictionary` . Therefore we have to be explicite as so `set()` for an empty set
+
+```
+>>> set()
+set()
+>>> {1}
+{1}
+>>> type({1})
+<class 'set'>
+>>> 
+```
+
+### Duplicated items
+The duplicated items will be ignored
+
+```
+>>> names = {"Nina", "Max", "Nina"}
+>>> names
+{'Max', 'Nina'}
+>>> len(names)
+2
+>>> 
+```
+
+### Sets cannot take mutable data types like such as List 
+
+Set use a builting `hash` function to reference its items. Hash can be performed only on immutable data type (string, number, ....)
+
+```
+>>> {[]}
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+>>> 
+```
+
+Set can be use to remove duplicate in a list by passing the list as an argument to create the set
+
+```
+>>> names = ["Nina", "Haja", "Nina"]
+>>> set(names)
+{'Haja', 'Nina'}
+>>> 
+```
+
+Set has length (but no order) and is mutable
+
+### Add from set
+
+Use the `.add(item_to_add)`. Tak eonly one argument
+
+```
+>>> colors = {"red", "green", "blue"}
+>>> colors.add("yellow")
+>>> colors
+{'green', 'blue', 'red', 'yellow'}
+>>> 
+```
+
+### Discard and Remove
+Remove from a set with `.discard(item_to_discard)`. It does not throw an error if `item_to_discard` does not 
+
+```
+>>> colors
+{'green', 'blue', 'red', 'yellow'}
+>>> colors.discard("yellow")
+>>> colors
+{'green', 'blue', 'red'}
+>>> 
+```
+
+We also have `.remove(item_to_remove)` which does the same thin as discard but will throw an error if `item_to_remove` does not exist in the set
+
+### Update a set (like a merge)
+
+With `.update(sequence_to_add)` will combine `sequence_to_add` to the set. Please note that `.update()` expect a sequence as an argument
+
+```
+>>> numbers = {3,4,5}
+>>> colors.update(numbers)
+>>> colors
+{'blue', 3, 4, 5, 'green', 'red'}
+>>> 
+```
+And because a `string` is actually a sequence. The operation would work but the result is not necessary what would one expect
+
+```
+>>> colors.update("string")
+>>> colors
+{'blue', 3, 4, 5, 's', 'r', 'n', 'green', 'g', 't', 'i', 'red'}
+>>> 
+```
+
+### Operation
+
+#### Search
+
+Check the presence of an item. Same as list and tuple but faster
+```
+>>> colors = {"red", "black", "green"}
+>>> "green" in colors
+True
+>>> 
+```
+
+#### Union
+
+Combine the items of two sets
+
+with `myset.union(other_set)` or `my_set | other_set`
+
+```
+>>> rainbow_colors = {"red", "yello", "blue"}
+>>> favorite_colors = {"orange","black"}
+>>> rainbow_colors.union(favorite_colors)
+{'yello', 'blue', 'black', 'orange', 'red'}
+>>> more_colors = {"pink", "black", "brown"}
+>>> rainbow_colors | more_colors
+# Note that pink was picked up only once
+{'yello', 'blue', 'black', 'brown', 'pink', 'red'}
+>>> 
+```
+#### Intersection
+
+Intersection create a new set with only items that appears on both sets. Will return empty set if there is no similar items
+
+```
+>>> intersection_colors = set()
+>>> rainbow_colors
+{'yello', 'blue', 'red'}
+>>> intersection_colors.add("blue")
+>>> new_intersection = rainbow_colors & intersection_colors
+>>> new_intersection
+{'blue'}
+>>> 
+```
+#### Difference
+
+Return the difference of two or more sets as a new set. (i.e. all elements that are in this set but not the others.)
+
+```
+>>> colors_one = {"blue", "red", "pink"}
+>>> colors_two = {"brown", "black", "red", "pink"}
+>>> diff_colors = colors_one ^ colors_two
+>>> diff_colors
+{'blue', 'black', 'brown'}
+>>> more_colors = {"black", "yello"}
+>>> diff_colors = diff_colors.difference(more_colors)
+>>> diff_colors
+{'blue', 'brown'}
+>>> 
+```
+
+#### Sort
+
+Since sets have no orders, they are therefore not sortable. One way would be to pass the set to a list that will return a list that can be sorted 
+
+```
+>>> not_sortable = {1,2,44,87,16}
+>>> not_sortable
+{1, 2, 44, 16, 87}
+>>> sortable = list(not_sortable)
+>>> sortable
+[1, 2, 44, 16, 87]
+>>> sortable.sort()
+>>> sortable
+[1, 2, 16, 44, 87]
+>>> 
+```
+
+## Dictionaries
+
+Allow to store data in key/value pairs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
