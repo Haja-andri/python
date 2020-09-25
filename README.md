@@ -118,9 +118,9 @@ def foo(a, b=None):
 ### Scope
 Scope are defined by indentations
 
-# 4/ Advanced data types
+## 4/ Advanced data types
 
-## List
+### List
 
 https://www.learnpython.dev/02-introduction-to-python/080-advanced-datatypes/10-lists/#list-cheat-sheet
 
