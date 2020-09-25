@@ -258,6 +258,53 @@ Remove the item at the given index (last item in the list by default), and retur
 >>> 
 ```
 
+#### del
+
+```
+>>> my_list
+['zero', 'one', 'two', 'two_and_half', 'tree']
+>>> del my_list[3]
+>>> my_list
+['zero', 'one', 'two', 'tree']
+>>> 
+```
+
+
+### Inserting
+
+Insert take the position at which it needs value needs to be inserted
+
+```
+>>> my_list
+['zero', 'one', 'two', 'tree']
+>>> my_list.insert(3, "two_and_half")
+>>> my_list
+['zero', 'one', 'two', 'two_and_half', 'tree']
+>>> 
+```
+
+
+#### List slicing getting items on specific range
+
+```
+>>> my_list = ["zero", "one", "two", "tree"]
+>>> my_list
+['zero', 'one', 'two', 'tree']
+>>> my_list[0]
+'zero'
+>>> my_list[0:2]
+['zero', 'one']
+# Same result below without specifying
+>>> my_list[:2]
+['zero', 'one']
+# The last item in the list
+>>> my_list[-1]
+'tree'
+>>> my_list[1:3]
+['one', 'two']
+>>> 
+```
+
 ## Tuples
 https://www.learnpython.dev/02-introduction-to-python/080-advanced-datatypes/30-tuples/#tuple-cheat-sheet
 
@@ -518,9 +565,170 @@ Since sets have no orders, they are therefore not sortable. One way would be to 
 >>> 
 ```
 
-## Dictionaries
+## Dictionaries (object?)
 
-Allow to store data in key/value pairs
+https://www.learnpython.dev/02-introduction-to-python/080-advanced-datatypes/60-dictionaries/#dict-ionary-cheat-sheet
+
+Allow to store data in key/value pairs. Dictionnaries are mutable but Keys used must be immutable data types because it uses hash function. 
+Checking is a key is in a dictionnary is a very fast operation.
+
+### Creation
+
+for an empty dictionnary `dict()` or `{}`
+
+With some data : 
+
+```
+>>> dict()
+{}
+>>> number = {1: "one", 2: "two"}
+>>> number
+{1: 'one', 2: 'two'}
+>>> 
+```
+Values can take mutable data type, but not the key because of the hash function it uses to reference its contents
+```
+>>> {["one"]:1}
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+>>> 
+```
+
+### Access
+
+There is no order, we access items with the keys
+
+```
+>>> my_dic = {"one" : 1, "two" : 2}
+>>> my_dic["two"]
+2
+>>> 
+```
+
+With Get. While access with `["key"]` throw an error it the `key` is not listed in the dictionnary, the `.get("key")` methode will return the value if found, otherwise nothing.
+
+```
+>>> my_dic.get("four")
+>>> my_dic.get("two")
+2
+>>> 
+```
+
+We can return a default value if a `key` is not present by passing a second argument to `.get()`.
+
+```
+>>> my_dic
+{'one': 1, 'two': 2}
+>>> my_dic.get("one")
+1
+>>> my_dic.get("four")
+>>> my_dic.get("four", "default value")
+'default value'
+>>> 
+```
+
+
+#### Add
+
+Dictionnaries are mutable. Use the square braquets with the key inside and assign with the value
+
+```
+>>> my_dic[4] = "Four"
+>>> my_dic
+{'one': 1, 'two': 2, 4: 'Four'}
+>>> my_dic[4] = "New Four"
+>>> my_dic
+{'one': 1, 'two': 2, 4: 'New Four'}
+>>> 
+```
+
+### Search
+
+Same as Set and tuples with the key work `in`
+
+```
+>>> my_dic
+{'one': 1, 'two': 2, 4: 'New Four'}
+>>> "one" in my_dic
+True
+>>> "tree" in my_dic
+False
+>>> 
+```
+### combining with update
+
+```
+>>> colors = {"p": "pink"}
+>>> numbers = {1: "one"}
+>>> colors
+{'p': 'pink'}
+>>> numbers
+{1: 'one'}
+>>> colors.update(numbers)
+>>> colors
+{'p': 'pink', 1: 'one'}
+>>> 
+```
+
+Since the values can be mutable data type we can have list as value for a specific key. Therefore we can apply methodes that mutates data on the value stored at specific key
+
+```
+>>> vegetables = {"green": ["spinach"]}
+>>> vegetables
+{'green': ['spinach']}
+>>> vegetables["green"]
+['spinach']
+>>> vegetables["green"].append("apple")
+>>> vegetables["green"]
+['spinach', 'apple']
+>>>
+```
+
+### Get the keys or the values list of a dictionnary 
+
+```
+>>> my_dictionary = {"one": 1, "two":2}
+>>> keys = my_dictionary.keys()
+>>> keys
+dict_keys(['one', 'two'])
+>>> values = my_dictionary.values()
+>>> values
+dict_values([1, 2])
+>>> 
+```
+
+The `.items()` methode will return a list of tuples of the key/value pair
+
+```
+>>> items = my_dictionary.items()
+>>> items
+dict_items([('one', 1), ('two', 2)])
+>>> 
+```
+
+## 5/ Mutability
+
+https://www.learnpython.dev/02-introduction-to-python/080-advanced-datatypes/65-mutability/#mutability
+
+### Not mutable
+
+`int`, `float`, `decimal`, `str`, `bool` are all not mutable. `tuple` despite being a container type is immutable
+
+### Mutable 
+
+`set`, `list`, `dict` are all mutables
+
+
+
+
+
+
+
+
+
+
+
 
 
 
