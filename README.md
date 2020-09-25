@@ -83,7 +83,7 @@ Use the + symbole
 Strings and Integers cannot be concatenated
 
 
-## Function 
+## 3/ Function 
 
 Formation: `def` `function_name` `()` `:` no braquet. Function uses indentations (tab or space) to define its scope.
 If a function returns a value, it can be assigned to another variable
@@ -118,7 +118,7 @@ def foo(a, b=None):
 ### Scope
 Scope are defined by indentations
 
-# Advanced data types
+# 4/ Advanced data types
 
 ## List
 
@@ -258,7 +258,7 @@ Remove the item at the given index (last item in the list by default), and retur
 >>> 
 ```
 
-# Tuples
+## Tuples
 https://www.learnpython.dev/02-introduction-to-python/080-advanced-datatypes/30-tuples/#tuple-cheat-sheet
 
 Tuples are UNMMUTABLE. Once create the items inside cannot be changed. Useful for thing like containing a snapshot of datas e.g spreadsheets.
@@ -300,7 +300,7 @@ Tuples are practical to store datas that together discribe something e.g a Stude
 '26'
 >>> 
 ```
-## Tuple unpacking (Similar to deconstruction in JS)
+### Tuple unpacking (Similar to deconstruction in JS)
 
 ```
 >>> student
@@ -324,7 +324,7 @@ If we want only some specific value (not all) in the tuple, we can unpack, we re
 'Haja'
 >>> 
 ```
-## Return a tuple from a function and unpack
+### Return a tuple from a function and unpack
 
 ```
 >>> def http_status_code():
