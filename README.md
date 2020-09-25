@@ -1,6 +1,6 @@
 # Learning notes on Python, Algorithms and Data structure
 
-## 1/Environment setup
+## 1/ Environment setup
 
 ```
 cd
@@ -10,25 +10,23 @@ python3.7 -m venv env
 source env/bin/activate
 ```
 
-## Starting REPL (Read, Execute, Print, ...)
+### Starting REPL (Read, Execute, Print, ...)
 
 Command + Shift + P
 
-## Get list of methode for a given type
+### Get list of methode for a given type
 
-Get the variable type with 
-type (variable);
-This will print the variable type, then
-dir (type);
+Get the variable type with  `type (variable);`
+This will print the variable type, then `dir (type)`
 
-## Recommended Coding convention to follow 
+### Recommended Coding convention to follow 
 
 PEP8 --> https://pep8.org
 
 
-## Variables
-There is no need to specify the type of the variable when creating it as Python is a dynamic. It is recommended to have them start with lower case and compose with dash (-)
-Variables cannot start with number and we must be careful not to overwrite existing data structures as Python allow things like list = 1, which will turn the list data structure into an integer
+## 2/ Variables
+There is no need to specify the type of the variable when creating it, since Python is a dynamically typed. It is recommended to have them start with lower case and compose with dash (-) or lowdash (_)
+Variables cannot start with number and we must be careful not to overwrite existing data types as Python allow things like `list = 1`, which will turn the list data type into an integer
 
 ### Integers
 ```
@@ -45,7 +43,7 @@ z= 0.0
 ```
 Integers an simple data types are just object under the hood
 
-## Operations
+### Operations
 
 ```
 x = 5
@@ -56,7 +54,7 @@ x + Y --> 8.0 (notice the result being a float)
 ### String
 Can be in single quote or double quote. It is recommended to use double quote as it can wrap single quote that are part of the string
 
-### long string
+### long string on REPL
 Use triple double quote
 
 ``` 
@@ -69,13 +67,14 @@ long_string = """
 long_string -> \n12342\nnoer\nandihsr (\n --> new line)
 ```
 ### fstring
+fprint allow combining variables directly into the string 
 
 ```
 variable = "Haja"
 f"Hello {variable}" --> Hello Haja
 ```
 
-## concatation
+### concatation
 Use the + symbole
 
 ```
@@ -86,7 +85,7 @@ Strings and Integers cannot be concatenated
 
 ## Function 
 
-Formation `def` `function_name` `()` `:` no braquet. Function uses indentations (tab or space) to define its scope.
+Formation: `def` `function_name` `()` `:` no braquet. Function uses indentations (tab or space) to define its scope.
 If a function returns a value, it can be assigned to another variable
 
 When a function argument have a default value, it has to be last in the function definition 
@@ -125,27 +124,27 @@ Scope are defined by indentations
 
 https://www.learnpython.dev/02-introduction-to-python/080-advanced-datatypes/10-lists/#list-cheat-sheet
 
-Can be created with two square braquets `[]` or list()
+List can be created with two square braquets `[]` or ` variable = list()`
 We use comma to separate the items inside the list. Pretty much like `array` in JS 
-Items does not need to be all the same type, but in practice it is better
+Items does not need to be all the same type, but in practice it is better.
 
 ```
 name = ["Haja", "Nina", "John"]
 ```
-Get the length of a list 
 
+Get the length of a list 
 ```
-len(name)
+len(name) --> 2
 #len is globaly available function
 ```
-List retain the order of the items inside --> Need to use index to access the items. The index start at `0`
+List retain the order of the items inside it --> We use index to access the items. The index start at `0`
 
 ```
 print(name[1]) --> "Nina"
 ```
 Because the items inside List has an order, then we can sort them. They are different way to sort
 
-### First way to sort --> Take the original list and return the a copy of the list that is sorted with `sorted()` built in function.
+### First way to sort --> Take the original list and return the a copy of the list that is sorted with `sorted(my_list)` built in function.
 It basically returns a copy of the list passed to it sorted (the orifinal list wont change)
 
 ```
@@ -154,13 +153,13 @@ lottery_numbers = [1,4,3423,78,11]
 sorted(lottery_numbers) --> [1, 4, 11, 78, 3423]
 print(lottery_numbers) --> [1, 4, 3423, 78, 11]
 ```
-Sorted take an optiona argument that define the order 
+Sorted take an optional argument that define the order 
 
 ```
 sorted(lottery_numbers, reverse=True) --> [3423, 78, 11, 4, 1]
 ```
 
-### Second way to sort is to do it in place (mutate the original list). It modifies the original list
+### Second way to sort is to do it in place but unlike sorted(), .sort() modifies the original list
 
 `.sort()` and `.reverse()` will mutate the list and has NO return
 
@@ -227,13 +226,15 @@ print(names) --> ["Nina", "Max","red", "bleu"]
 ```
 
 ### Remove item form list with 
+
 #### .remove()
-Note that `.remove("arg")` will remove only the first item that match the `arg`
+Note that `.remove("item_to_remove")` will remove only the first item that match the `arg`
 ```
 >>> names.remove("Gab")
 >>> names
 ['Nina', 'Dan', 'Nina']
 ```
+
 #### .pop()
 Remove the item at the given index (last item in the list by default), and return the item.
 
@@ -260,9 +261,10 @@ Remove the item at the given index (last item in the list by default), and retur
 # Tuples
 https://www.learnpython.dev/02-introduction-to-python/080-advanced-datatypes/30-tuples/#tuple-cheat-sheet
 
-Tuples are UNMMUTABLE. Once create the items inside cannot be changed. Useful for thing like containing a snapshot of datas.
+Tuples are UNMMUTABLE. Once create the items inside cannot be changed. Useful for thing like containing a snapshot of datas e.g spreadsheets.
 
 Make a tuple with empty parenthesis. If a value is provided inside the parenthesis, then it is not a tuple anymore. We have to add a commat at the end to make it a tuple
+
 ```
 >>> a = ()
 >>> type(a)
@@ -314,7 +316,7 @@ Tuples are practical to store datas that together discribe something e.g a Stude
 9.0
 ```
 
-If we dont want a specific value in the typle to ne unpacked, we replace with underscore `_`
+If we want only some specific value (not all) in the tuple, we can unpack, we replace with underscore `_` at the position that we dont need/want. Note that the orders matters
 
 ```
 >>> name, _, _, _ = student
@@ -337,33 +339,3 @@ If we dont want a specific value in the typle to ne unpacked, we replace with un
 'OK'
 >>> 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
