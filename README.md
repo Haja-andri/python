@@ -10,7 +10,7 @@ python3.7 -m venv env
 source env/bin/activate
 ```
 
-### Starting REPL (Read, Execute, Print, ...)
+### Starting REPL (Read, Evaluate, Print, Loop)
 
 Command + Shift + P
 
@@ -720,27 +720,325 @@ https://www.learnpython.dev/02-introduction-to-python/080-advanced-datatypes/65-
 `set`, `list`, `dict` are all mutables
 
 
+## Booleans
+
+https://www.learnpython.dev/02-introduction-to-python/090-boolean-logic/10-truthiness/#cheat-sheet
+
+### The integer
+
+ 0 is falsy. Any other integer are True even negatvie numvers
 
 
+```
+>>> bool(0)
+False
+>>> bool(10)
+True
+>>> bool(-10)
+True
+>>> 
+```
+### List, Tuple, Set, Dictionary
+
+Empty list, Tuple, Set and Dictionnaries are all falsy unless they have at least a value in it
+
+```
+>>> bool({})
+False
+>>> bool(())
+False
+>>> bool([])
+False
+>>> bool(set())
+False
+```
+
+### String
+
+Empty string is falsy. Becomes true once has at least one characters
+
+## Comparaison
+
+### Less and greater, Less or and greater or
+
+`<` and `>`
+`<=` and `>=`
+
+Hint : Upper case string is lower than its lower case
+
+```
+>>> "T" < "t"
+True
+>>> 
+```
+### Equality
+
+`==`
+
+### Key word `is`
+
+The key wor is check for identity by checking reference in memory 
+
+```
+>>> a = [0,1,2]
+>>> b = [0,1,2]
+# a and be are equal (same items values)
+>>> a == b
+True
+
+# a is not be: Do not point to the same reference in memory
+>>> a is b
+False
+>>> 
+```
+### Key word `is not`
+
+Reverse of `is`
+
+```
+>>> a = [0,1,2]
+>>> b = [0,1,2]
+>>> a == b
+True
+>>> a is b
+False
+>>> a is not b
+True
+>>> 
+```
+
+### And, Or and Not
+
+https://www.learnpython.dev/02-introduction-to-python/090-boolean-logic/30-and-or-not/#and-or-not-cheat-sheet
 
 
+#### Or
+The or statement will return the thrufty value of the comparaison. If both are True it will return the first one (left side of the comparaison)
+
+```
+>>> [] or [1]
+[1]
+>>> [1] or []
+[1]
+>>> [1] or [1]
+[1]
+>>> [1] or [2]
+[1]
+>>> [2] or [1]
+[2]
+>>> 
+```
+
+#### And
+
+Will return the first `false` value unless both are `true`. If both are true the right side of the comparaison will be returned
+
+```
+>>> [] and [1]
+[]
+>>> [1] and []
+[]
+>>> [1] and [2]
+[2]
+>>> [2] and [1]
+[1]
+>>> 
+```
+
+#### Not
+
+Return the reverse
+
+```
+>>> not []
+True
+>>> not True
+False
+>>> 
+```
+
+## Loops and Control
+
+### Looping in a list with For
+
+For item in items list do something
+
+```
+>>> colors = ["red", "pink", "blue"]
+>>> for color in colors:
+...     print(color)
+... 
+red
+pink
+blue
+>>> 
+```
+Note, since the for is not a function,`color` will persist in the scope of the function that contain the for loop. Here, `color` will have `blue` as value (the last assigment in the for loop)
+
+```
+>>> colors = ["red", "pink", "blue"]
+>>> for color in colors:
+...     print(color)
+... 
+red
+pink
+blue
+>>> color
+'blue'
+>>> 
+```
+
+To access the index we have to use the enumerate function applied on the list
+
+```
+>>> colors = ["pink", "red", "blue"]
+>>> for index, color in enumerate(colors):
+...     print(f"Current index is {index} with color {color}")
+... 
+Current index is 0 with color pink
+Current index is 1 with color red
+Current index is 2 with color blue
+>>> 
+```
 
 
+### Range
+
+We can provide a range to the for loop
 
 
+### Loop over a dictionary
+
+This loop will return only the keys of the dictionary
+
+```
+>>> my_dictionnary = {1: "one", 2:"two", 3:"tree"}
+>>> my_dictionnary
+{1: 'one', 2: 'two', 3: 'tree'}
+>>> for item in my_dictionary:
+...     print(item)
+... 
+one
+two
+>>> 
+```
+
+If we want to access the value. We can use the `.items()` methode on the dictionary. This will return a tuple of key/pair value that can be unpacked to specific variables
+
+```
+>>> for number_rep, string_rep in my_dictionnary.items():
+...     print(f"The number representation is {number_rep} and the string is {string_rep}")
+... 
+The number representation is 1 and the string is one
+The number representation is 2 and the string is two
+The number representation is 3 and the string is tree
+>>> 
+```
+
+### While loop
+
+Run forever until a condition is match
+
+```
+>>> counter = 0
+>>> max = 4
+>>> while counter < max:
+...     print(f"counter {counter}")
+...     counter = counter + 1
+... 
+counter 0
+counter 1
+counter 2
+counter 3
+>>> 
+```
+We can control loops with Break Continue and Return
+
+#### Break 
+
+It will break completly the current loop execution
+
+```
+>>> names = ["Jimmy", "Rose", "Max", "Nina", "Phillip"]
+>>> for name in names:
+...     print(f"Hello {name}")
+...     if name == "Nina":
+...             break
+... 
+Hello Jimmy
+Hello Rose
+Hello Max
+Hello Nina
+>>> 
+```
+
+If we are in a nested loop. The break method will break only the currentl level of the loop and jump back to the parent loop
+The `return` key word would also break the loop
+
+#### Continue
+
+This will skip the remaining of the loop and go back to the bigginning of the loop until its condition is met
+
+```
+>>> names
+['Jimmy', 'Rose', 'Max', 'Nina', 'Phillip']
+>>> for name in names:
+...     if name != "Nina":
+...             continue
+...     print(f"Hello, {name}")
+... 
+Hello, Nina
+>>> 
+```
 
 
+## Re-using function from other files.
 
+If the file that contain the function we want to use is in the same directory. We can just import it with with the file name
 
+`import file_that_host_needed_function.py`
 
+Then in the current script, we call call the needed function by callin the file imported concataned with a `.needed_function_name(argument)`
 
+```
+output = file_that_host_needed_function.needed_function_name("argument")
+```
 
+However, if `needed_function_name` do some print inside his body but we dont want to see the print from the calling script, We have to put a condition in the called function that say that we print only if we are in the `Main` thread. We can do so by wrapping the code in an `if` statement by checking if we are in the main thread
 
+```
+if __name__ == "__main___":
+  # The following print will print only if we are in the main
+  print("We are in the main")
+```
 
+## Handling ecxeption to continue a program usin try + except
+We must specify the type of `except` we want to handle
 
+```
+try:
+  int("a") # this is not allowed setting a strin =g as an integer
+except ValueError as error:
+  print(f"Oops not permitted {error}")
+print("We reached the end despite the error") 
 
+>>>Oops not permitted invalid literal for int() with base 10: 'a'
+>>>We reached the end despite the error
+```
 
+## Import request library 
+Install the `requests` library
 
+```
+python -m pip install request
+```
 
+The request library allow to interaction with APIs. Most API calls will return a JSON file and the request library with turn it into a dictionary
 
-
+```
+import requests
+api_repo_search_url = "https://api.github.com/search/repositories"
+response = requests.get(api_repo_search_url)
+response_json = response.json()
+return response_json
+```
