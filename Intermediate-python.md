@@ -292,6 +292,9 @@ They dont have to have an end because there is no memory assignment. It knows on
 >>> 
 ```
 
+Also note that generators are not reusable/persistant. Once consumed it will be freed from the memory
+
+
 # Slicing
 Slice works on all data type that has an order (list, tuple)
 Create sub (copy) list/tuple from an list/tuple
@@ -463,6 +466,98 @@ The list must have the same lenght for a balanced output. Otherwise the extra el
 {'Haja': 10, 'Tom': 3, 'John': 7}
 >>> 
 ```
+
+
+# Object Oriented Program
+
+Everything in Python are objects. We can se them as generic containers to group concept together
+
+## Classes
+
+### Self
+
+If we want to pass an argument to initialise the instance of a classe we use a special notation called constructor
+
+`def` + `__init__` + `(self, arg_for_instance_initialisation)`
+
+```
+class Car:
+  runs = True
+
+  # the constructor
+  def __init__(self, name):
+    print(f"New car ! ")
+    self.name = name
+  
+  def start(self):
+    if self.runs:
+      print(f"Car is started {self.name}")
+    else:
+      print(f"{self.name} is broken")
+```
+
+
+### Making classes readable/friendly
+
+Add the folowing special methods to the class
+
+```
+  # This methode is to help understanding our class
+  # by providing a readeable string (friendly) when we print an 
+  # instance of the class
+  def __str__(self):
+    return f"My car the {self.name} currently {self.runs}"
+
+  # this allow to print the class with all of the arguments that is expected
+  def __repr__(self):
+    return f"Car {self.name}"
+```
+
+then
+
+```
+new_car = Car("BMW")
+print(new_car) --> My car the BMW currently True
+print(repr(new_car)) ---> Car BMW
+```
+
+## Inheritance
+
+Share properties/attributes between each other
+We pass the more generic class as a parameters of the class that inherite from it. 
+Then we use the `super` keyword to hook the sub class with the constructor of it more generic
+
+```
+## Create a more generic class
+class Vehicule:
+  
+  def __init__(self, make, model, fuel="gas"):
+    self.make = make
+    self.model = model
+    self.fuel = fuel
+    
+  def is_fuel_efficient(self):
+    if self.fuel == "gas":
+      return False
+    else:
+      return True    
+
+# An class that will inherite from vehicule
+class Car(Vehicule):
+  def __init__(self, make, model, fuel="gas", number_of_wheels=4):
+    # the super key word lock with the more generic class
+    # it will basically call the constructor of the class Vehicule
+    super().__init__(make, model, fuel)
+    # parameter that is specific to the Car class (do not exist in vehicule)
+    self.number_of_wheels = number_of_wheels
+    
+four_by_four = Vehicule("Tesla", "S3", "petrol")
+my_sub = Car("Subaru", "Flyer")
+print(my_sub.is_fuel_efficient()) --> False (defaulted to "gas", since it was not initialised)
+ ```
+
+The subclass can access all methodes that are present in the parent class. Here i.e 
+
 
 
 
