@@ -222,9 +222,11 @@ To get a set, we basically use the same syntax/construction as for the list, but
 
 Just have to add the column that define keys vs values. Below the actual number is the key and the square is the value
 
+```
 >>> {num: num * num for num in range(12)}
 {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, 10: 100, 11: 121}
->>> 
+>>>
+```
 
 # Generators
 
