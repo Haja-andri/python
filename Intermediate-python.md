@@ -569,5 +569,61 @@ python -i path/to/my/file.py
 
 # Exceptions
 
+https://www.learnpython.dev/03-intermediate-python/40-exceptions/10-all-about-exceptions/
+
+## Try & Except
+
+If we want our script to be able to continue even if an exception is raised ... we can use the `try` & `except` pattern
+
+```
+>>> input = "a"
+>>> try:
+...     int(input)
+... except ValueError as error:
+...     print("This is the error :" , error)
+... 
+This is the error : invalid literal for int() with base 10: 'a'
+>>> 
+```
+
+The above will execute the code in the Except block since the `Try` would trigger an error
+
+### Except can take several option through tuples
+
+```
+>>> d = {1: "One"}
+>>> user_input = 2
+>>> try:
+...     int(user_input)
+...     print(int(user_input))
+...     d[user_input]
+... except (ValueError, KeyError):
+...     print("Ho no! ....")
+... 
+2
+2
+Ho no! ....
+>>> 
+```
+
+## Custome exception 
+
+Create a class that inherite from `Exception` class, and pass in custom message hooking up with the `super` methode
+
+```
+class IncorrectValueError(Exception):
+...     def __init__(self, value):
+...         message = f"Got an incorrect value of {value}"
+...         super().__init__(message)
+...
+>>> my_value = 9999
+>>> if my_value > 100:
+...     raise IncorrectValueError(my_value)
+...
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+__main__.IncorrectValueError: Got an incorrect value of 9999
+```
+
 
 
