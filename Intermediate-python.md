@@ -559,6 +559,15 @@ print(my_sub.is_fuel_efficient()) --> False (defaulted to "gas", since it was no
 The subclass can access all methodes that are present in the parent class. Here i.e 
 
 
+# Debugging
+
+In the terminal, add `-i` options to run the file we want to execute. This will automatically open a REPL in wich we can then inspect verious status, type, methode, variables ...
+
+```
+python -i path/to/my/file.py
+```
+
+# Exceptions
 
 
 
