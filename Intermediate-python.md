@@ -625,5 +625,11 @@ Traceback (most recent call last):
 __main__.IncorrectValueError: Got an incorrect value of 9999
 ```
 
+# Standard library
+
+https://www.learnpython.dev/03-intermediate-python/50-libraries-modules/10-standard-library/
+
+# Command line tools
+
 
 
