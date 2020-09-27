@@ -1042,3 +1042,8 @@ response = requests.get(api_repo_search_url)
 response_json = response.json()
 return response_json
 ```
+
+# Working with files
+
+https://www.learnpython.dev/02-introduction-to-python/175-running-code/60-working-with-files/
+
